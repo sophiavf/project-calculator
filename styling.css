@@ -8,34 +8,54 @@ main {
 	align-content: center;
 	overflow: hidden;
 }
+
 .calculator {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(6, 1fr);
-	justify-content: baseline;
-	grid-gap: 8px;
+	align-items: center;
+	justify-content: center;
+	grid-gap: 1rem;
 	border: 1px solid blue;
-    border-radius: 8px;
-    padding: 24px;
-    background-color: cornflowerblue;
+	padding: 24px;
+	background-color: cornflowerblue;
 }
 button {
 	border-radius: 50%;
-	padding: 10px;
-    font-size: 2em; 
+	font-size: 1rem;
+	height: 5rem;
+	width: 4rem;
 }
-.screen {
+.operator {
+	background-color: blueviolet;
+}
+button[value="allClear"] {
 	grid-column-start: 1;
-	grid-column-end: 5;
-	border: 1px solid whitesmoke;    
-    font-size: 3em;
-    min-height: 60px;
-    margin-bottom: 8px;
-    background-color: white;
+	grid-column-end: 4;
+	border-radius: 40px;
+	width: 14rem;
+	background-color: orange;
 }
-.zero {
+button[value="0"] {
 	grid-column-start: 1;
 	grid-column-end: 3;
 	flex: 1;
+	width: 9rem;
 	border-radius: 40px;
+}
+
+.screen {
+	grid-column-start: 1;
+	grid-column-end: 5;
+	display: flex;
+	flex-direction: column;
+
+	border: 1px solid whitesmoke;
+	font-size: 2rem;
+	margin-bottom: 8px;
+
+	height: 4rem;
+	background-color: white;
+	text-align: right;
+	padding: 2px;
 }

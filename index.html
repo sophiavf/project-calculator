@@ -8,27 +8,30 @@
 	<body>
 		<main>
 			<div class="calculator">
-				<div class="screen"></div>
-				<button class="allClear">AC</button>
-				<button class="signKey">+/-</button>
-				<button class="percentage">%</button>
-				<button class="divide">÷</button>
-				<button class="7">7</button>
-				<button class="8">8</button>
-				<button class="9">9</button>
-				<button class="multiply">×</button>
-				<button class="4">4</button>
-				<button class="5">5</button>
-				<button class="6">6</button>
-				<button class="minus">-</button>
-				<button class="1">1</button>
-				<button class="2">2</button>
-				<button class="3">3</button>
-				<button class="+">+</button>
-				<button class="zero">0</button>
-				<button class="point">.</button>
-				<button class="equals">=</button>
-			</div>
+				<div class="screen">
+					<div class="line-1"></div>
+					<div class="line-2"></div>
+				</div>
+				<button value="allClear" class="operator" data-key="27">
+					Clear All
+				</button>
+				<button value="divide" class="operator" data-key="191">÷</button>
+				<button value="7" class="operand" data-key="55">7</button>
+				<button value="8" class="operand" data-key="56">8</button>
+				<button value="9" class="operand" data-key="57">9</button>
+				<button value="multiply" class="operator" data-key="56 88">x</button>
+				<button value="4" class="operand" data-key="52">4</button>
+				<button value="5" class="operand" data-key="53">5</button>
+				<button value="6" class="operand" data-key="54">6</button>
+				<button value="minus" class="operator" data-key="189">-</button>
+				<button value="1" class="operand" data-key="49">1</button>
+				<button value="2" class="operand" data-key="50">2</button>
+				<button value="3" class="operand" data-key="">3</button>
+				<button value="+" class="operator" data-key="187">+</button>
+				<button value="0" class="operand" data-key="48">0</button>
+				<button value="decimal" class="operand" data-key="190">.</button>
+				<button value="equals" class="operator" data-key="187 13">=</button>
+			</div> 
 		</main>
 		<script src="project-calculator.js"></script>
 	</body>
