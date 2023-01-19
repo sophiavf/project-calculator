@@ -37,7 +37,7 @@ function operate(operator, x, y) {
 // JS DOM
 const buttons = document.querySelectorAll("button");
 const display = document.querySelector(".screen");
-const LastOperation = document.querySelector(".line-1");
+const lastOperation = document.querySelector(".line-1");
 const currentOperation = document.querySelector(".line-2");
 let firstOperand;
 let secondOperand;
@@ -61,7 +61,7 @@ function click() {
 					//if the first operand (a number) has already been entered but no operator, an additional number is appended to it
 				} else if (firstOperand && !operator) {
 					firstOperand = firstOperand + "" + button.textContent;
-					updateCurrentOperation(firstOperand); 
+					updateCurrentOperation(firstOperand);
 					//checks if second operator has been entered yet
 				} else if (!secondOperand) {
 					//Check if number should be appended to secondOperand
@@ -70,25 +70,26 @@ function click() {
 					//if none of the above statement evaluate to true, then it must be appended to the secondOperator
 				} else {
 					secondOperand = secondOperand + "" + button.textContent;
-					updateCurrentOperation(secondOperand); 
+					updateCurrentOperation(secondOperand);
 				}
 			}
 			if (button.className === "operator") {
 				//check if operator is '='
-				if (button.textContent === "=" && secondOperand) {
+				if (button.getAttribute("value") === "allClear") {
+					clearDisplay();
+				} else if (button.textContent === "=" && secondOperand) {
 					updateLastOperation(`${firstOperand} ${operator} ${secondOperand} =`);
-					firstOperand = operate(operator, firstOperand, secondOperand);
+					firstOperand = operate(operator, +firstOperand, +secondOperand);
 					result = firstOperand;
 					updateCurrentOperation(result);
-					resetValues();
+					secondOperand = '';
 					// if the person enters a 2nd operator that != equals, the first and second operand and operator need to be evaluated i.e. 1 + 2 (3) + 3 (so 3+3) => string together several operations and get the right answer
-				} else if (button.getAttribute("value" === "allClear")) {
-					clearDisplay();
 				} else if (operator && secondOperand) {
-					firstOperand = operate(operator, firstOperand, secondOperand);
+					firstOperand = operate(operator, +firstOperand, +secondOperand);
 					operator = button.textContent;
 					updateLastOperation(`${firstOperand} ${operator}`);
-					resetValues();
+					updateCurrentOperation(""); 
+					secondOperand = '';
 				} else if (firstOperand) {
 					operator = button.textContent;
 					updateLastOperation(`${firstOperand} ${operator}`);
@@ -116,27 +117,25 @@ function addDecimal() {
 
 //Rounds result to 2 decimal places so they do not overflow the screen
 function roundToTwo(num) {
-	return Math.round(num * 100) / 100; 
+	if (Number.isInteger(num)) {
+		return num;
+	} else {
+		return Math.round(num * 100) / 100;
+	}
 }
-
 
 //if the user presses the allClear button, the display is cleared
 function clearDisplay() {
-	line_1.textContent = "";
-	line_2.textContent = "";
-	delete displayValue;
-	delete firstOperand;
-	delete secondOperand;
-	delete operator;
-	delete result;
-}
-function resetValues() {
-	delete secondOperand;
-	delete operator;
+	currentOperation.textContent = "";
+	lastOperation.textContent = "";
+	firstOperand = '';
+	secondOperand = '';
+	operator = '';
+	result = '';
 }
 
 function updateLastOperation(content) {
-	LastOperation.textContent = content;
+	lastOperation.textContent = content;
 }
 
 function updateCurrentOperation(content) {
