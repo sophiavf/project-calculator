@@ -90,7 +90,7 @@ function click() {
 					updateLastOperation(`${firstOperand} ${operator}`);
 					updateCurrentOperation(""); 
 					secondOperand = '';
-				} else if (firstOperand) {
+				} else if (firstOperand && button.textContent != "=") {
 					operator = button.textContent;
 					updateLastOperation(`${firstOperand} ${operator}`);
 					updateCurrentOperation("");
